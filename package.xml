@@ -10,7 +10,7 @@
   <email>wrobel@pardus.de</email>
   <active>yes</active>
  </lead>
- <date>2014-06-23</date>
+ <date>2017-10-17</date>
  <version>
   <release>1.0.0alpha1</release>
   <api>1.0.0alpha1</api>
@@ -45,7 +45,6 @@
    <dir name="doc">
     <dir name="Horde">
      <dir name="Push">
-      <file name="COPYING" role="doc" />
       <file name="TODO" role="doc" />
      </dir> <!-- /doc/Horde/Push -->
     </dir> <!-- /doc/Horde -->
@@ -169,6 +168,7 @@
      </dir> <!-- /test/Horde/Push -->
     </dir> <!-- /test/Horde -->
    </dir> <!-- /test -->
+   <file name="LICENSE" role="doc" />
   </dir> <!-- / -->
  </contents>
  <dependencies>
@@ -272,22 +272,21 @@
  <phprelease>
   <filelist>
    <install as="horde-push" name="bin/horde-push" />
-   <install as="COPYING" name="doc/Horde/Push/COPYING" />
    <install as="TODO" name="doc/Horde/Push/TODO" />
    <install as="Horde/Push.php" name="lib/Horde/Push.php" />
    <install as="Horde/Push/Cli.php" name="lib/Horde/Push/Cli.php" />
    <install as="Horde/Push/Exception.php" name="lib/Horde/Push/Exception.php" />
-   <install as="Horde/Push/Recipient.php" name="lib/Horde/Push/Recipient.php" />
-   <install as="Horde/Push/Translation.php" name="lib/Horde/Push/Translation.php" />
    <install as="Horde/Push/Factory/Push.php" name="lib/Horde/Push/Factory/Push.php" />
    <install as="Horde/Push/Factory/Recipients.php" name="lib/Horde/Push/Factory/Recipients.php" />
+   <install as="Horde/Push/Recipient.php" name="lib/Horde/Push/Recipient.php" />
    <install as="Horde/Push/Recipient/Base.php" name="lib/Horde/Push/Recipient/Base.php" />
    <install as="Horde/Push/Recipient/Blogger.php" name="lib/Horde/Push/Recipient/Blogger.php" />
    <install as="Horde/Push/Recipient/Facebook.php" name="lib/Horde/Push/Recipient/Facebook.php" />
    <install as="Horde/Push/Recipient/Mail.php" name="lib/Horde/Push/Recipient/Mail.php" />
    <install as="Horde/Push/Recipient/Mock.php" name="lib/Horde/Push/Recipient/Mock.php" />
    <install as="Horde/Push/Recipient/Twitter.php" name="lib/Horde/Push/Recipient/Twitter.php" />
-   <install as="locale/Horde_Push.pot" name="locale/Horde_Push.pot" />
+   <install as="Horde/Push/Translation.php" name="lib/Horde/Push/Translation.php" />
+   <install as="LICENSE" name="LICENSE" />
    <install as="locale/da/LC_MESSAGES/Horde_Push.mo" name="locale/da/LC_MESSAGES/Horde_Push.mo" />
    <install as="locale/da/LC_MESSAGES/Horde_Push.po" name="locale/da/LC_MESSAGES/Horde_Push.po" />
    <install as="locale/de/LC_MESSAGES/Horde_Push.mo" name="locale/de/LC_MESSAGES/Horde_Push.mo" />
@@ -300,6 +299,7 @@
    <install as="locale/fi/LC_MESSAGES/Horde_Push.po" name="locale/fi/LC_MESSAGES/Horde_Push.po" />
    <install as="locale/fr/LC_MESSAGES/Horde_Push.mo" name="locale/fr/LC_MESSAGES/Horde_Push.mo" />
    <install as="locale/fr/LC_MESSAGES/Horde_Push.po" name="locale/fr/LC_MESSAGES/Horde_Push.po" />
+   <install as="locale/Horde_Push.pot" name="locale/Horde_Push.pot" />
    <install as="locale/hu/LC_MESSAGES/Horde_Push.mo" name="locale/hu/LC_MESSAGES/Horde_Push.mo" />
    <install as="locale/hu/LC_MESSAGES/Horde_Push.po" name="locale/hu/LC_MESSAGES/Horde_Push.po" />
    <install as="locale/ja/LC_MESSAGES/Horde_Push.mo" name="locale/ja/LC_MESSAGES/Horde_Push.mo" />
@@ -309,22 +309,22 @@
    <install as="Horde/Push/AllTests.php" name="test/Horde/Push/AllTests.php" />
    <install as="Horde/Push/Autoload.php" name="test/Horde/Push/Autoload.php" />
    <install as="Horde/Push/bootstrap.php" name="test/Horde/Push/bootstrap.php" />
-   <install as="Horde/Push/phpunit.xml" name="test/Horde/Push/phpunit.xml" />
-   <install as="Horde/Push/TestCase.php" name="test/Horde/Push/TestCase.php" />
    <install as="Horde/Push/fixtures/empty.php" name="test/Horde/Push/fixtures/empty.php" />
    <install as="Horde/Push/fixtures/note.php" name="test/Horde/Push/fixtures/note.php" />
    <install as="Horde/Push/fixtures/note.xml.qp" name="test/Horde/Push/fixtures/note.xml.qp" />
    <install as="Horde/Push/fixtures/push.php" name="test/Horde/Push/fixtures/push.php" />
    <install as="Horde/Push/fixtures/push.yaml" name="test/Horde/Push/fixtures/push.yaml" />
    <install as="Horde/Push/fixtures/text.txt" name="test/Horde/Push/fixtures/text.txt" />
+   <install as="Horde/Push/phpunit.xml" name="test/Horde/Push/phpunit.xml" />
    <install as="Horde/Push/Stub/Twitter.php" name="test/Horde/Push/Stub/Twitter.php" />
-   <install as="Horde/Push/Unit/PushTest.php" name="test/Horde/Push/Unit/PushTest.php" />
+   <install as="Horde/Push/TestCase.php" name="test/Horde/Push/TestCase.php" />
    <install as="Horde/Push/Unit/Push/CliTest.php" name="test/Horde/Push/Unit/Push/CliTest.php" />
    <install as="Horde/Push/Unit/Push/Factory/PushTest.php" name="test/Horde/Push/Unit/Push/Factory/PushTest.php" />
    <install as="Horde/Push/Unit/Push/Factory/RecipientTest.php" name="test/Horde/Push/Unit/Push/Factory/RecipientTest.php" />
    <install as="Horde/Push/Unit/Push/Recipient/BloggerTest.php" name="test/Horde/Push/Unit/Push/Recipient/BloggerTest.php" />
    <install as="Horde/Push/Unit/Push/Recipient/MailTest.php" name="test/Horde/Push/Unit/Push/Recipient/MailTest.php" />
    <install as="Horde/Push/Unit/Push/Recipient/TwitterTest.php" name="test/Horde/Push/Unit/Push/Recipient/TwitterTest.php" />
+   <install as="Horde/Push/Unit/PushTest.php" name="test/Horde/Push/Unit/PushTest.php" />
   </filelist>
  </phprelease>
  <changelog>
@@ -337,7 +337,7 @@
     <release>alpha</release>
     <api>alpha</api>
    </stability>
-   <date>2014-06-23</date>
+   <date>2017-10-17</date>
    <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
    <notes>
 * [jan] Mark PHP 7 as supported.
