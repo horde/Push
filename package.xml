@@ -45,7 +45,7 @@
    <dir name="doc">
     <dir name="Horde">
      <dir name="Push">
-      <file name="TODO" role="doc" />
+      <file name="TODO.rst" role="doc" />
      </dir> <!-- /doc/Horde/Push -->
     </dir> <!-- /doc/Horde -->
    </dir> <!-- /doc -->
@@ -272,7 +272,7 @@
  <phprelease>
   <filelist>
    <install as="horde-push" name="bin/horde-push" />
-   <install as="TODO" name="doc/Horde/Push/TODO" />
+   <install as="TODO.rst" name="doc/Horde/Push/TODO.rst" />
    <install as="Horde/Push.php" name="lib/Horde/Push.php" />
    <install as="Horde/Push/Cli.php" name="lib/Horde/Push/Cli.php" />
    <install as="Horde/Push/Exception.php" name="lib/Horde/Push/Exception.php" />
