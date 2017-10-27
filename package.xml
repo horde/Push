@@ -10,7 +10,7 @@
   <email>wrobel@pardus.de</email>
   <active>yes</active>
  </lead>
- <date>2017-10-20</date>
+ <date>2017-10-27</date>
  <version>
   <release>1.0.0alpha1</release>
   <api>1.0.0alpha1</api>
@@ -45,6 +45,7 @@
    <dir name="doc">
     <dir name="Horde">
      <dir name="Push">
+      <file name="CHANGES" role="doc" />
       <file name="TODO.rst" role="doc" />
      </dir> <!-- /doc/Horde/Push -->
     </dir> <!-- /doc/Horde -->
@@ -271,6 +272,7 @@
  <phprelease>
   <filelist>
    <install as="horde-push" name="bin/horde-push" />
+   <install as="CHANGES" name="doc/Horde/Push/CHANGES" />
    <install as="TODO.rst" name="doc/Horde/Push/TODO.rst" />
    <install as="Horde/Push.php" name="lib/Horde/Push.php" />
    <install as="Horde/Push/Cli.php" name="lib/Horde/Push/Cli.php" />
@@ -335,7 +337,7 @@
     <release>alpha</release>
     <api>alpha</api>
    </stability>
-   <date>2017-10-20</date>
+   <date>2017-10-27</date>
    <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
    <notes>
 * [jan] Mark PHP 7 as supported.
