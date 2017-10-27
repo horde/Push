@@ -1,5 +1,5 @@
 {
-    "name": "horde/horde-push",
+    "name": "horde/push",
     "description": "A package for broadcasting status updates and content to various social network services.",
     "type": "library",
     "homepage": "https://pear.horde.org",
