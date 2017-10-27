@@ -1,0 +1,23 @@
+---
+1.0.0alpha1:
+  api: 1.0.0alpha1
+  state:
+    release: alpha
+    api: alpha
+  date: 2017-10-20
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: |
+    [jan] Mark PHP 7 as supported.
+    [jan] Fix issues with certain locales like Turkish.
+    [jan] Add Hungarian translation (Andras Galos <galosa@netinform.hu>).
+    [jan] Add Danish translation (Erling Preben Hansen <erling@eph.dk>).
+    [jan] Add French translation (Paul De Vlieger <paul.de_vlieger@moniut.univ-bpclermont.fr>).
+    [jan] Add Basque translation (Ibon Igartua <ibon.igartua@ehu.es>).
+    [jan] Fix finding locale directory if installed with PEAR.
+    [jan] Add Finnish translation (Leena Heino <liinu@uta.fi>).
+    [jan] Add Spanish translation (Manuel P. Ayala <mayala@unex.es>).
+    [jan] Add Latvian translation (Jānis Eisaks <jancs@dv.lv>).
+    [jan] Add Japanese translation (Hiromi Kimura <hiromi@tac.tsukuba.ac.jp>).
+    Initial release.
