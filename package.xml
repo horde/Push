@@ -2,7 +2,7 @@
 <package packagerversion="1.9.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
  <name>Horde_Push</name>
  <channel>pear.horde.org</channel>
- <summary>A package for broadcasting status updates and content to various social network services.</summary>
+ <summary>Social network services library</summary>
  <description>The package provides a simple definition of a content element that can be pushed to a number of social network services. This will not leverage some of the more complex features the supported services provide but instead focus on a simple status and content update. The content element provides a bridge to quickly broadcast content curated within your own account.</description>
  <lead>
   <name>Gunnar Wrobel</name>
@@ -10,7 +10,7 @@
   <email>wrobel@pardus.de</email>
   <active>yes</active>
  </lead>
- <date>2017-10-30</date>
+ <date>2017-11-14</date>
  <version>
   <release>1.0.0alpha1</release>
   <api>1.0.0alpha1</api>
@@ -339,7 +339,7 @@
     <release>alpha</release>
     <api>alpha</api>
    </stability>
-   <date>2017-10-30</date>
+   <date>2017-11-14</date>
    <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
    <notes>
 * [jan] Mark PHP 7 as supported.
