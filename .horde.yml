@@ -3,8 +3,8 @@ id: Push
 name: Push
 full: Social network services library
 description: >-
-  A library allowing to
-  push simple definitions of content elements to a number of social network services.
+  A library allowing to push simple definitions of content elements to a number
+  of social network services.
 list: dev
 type: library
 authors:
