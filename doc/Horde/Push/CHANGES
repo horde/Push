@@ -1,7 +1,8 @@
-----------------
-v1.0.0alpha1-git
-----------------
+------------
+v1.0.0alpha1
+------------
 
+[rla] Package for H6 / composer installer.
 [jan] Mark PHP 7 as supported.
 [jan] Fix issues with certain locales like Turkish.
 [jan] Add Hungarian translation (Andras Galos <galosa@netinform.hu>).
