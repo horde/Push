@@ -135,9 +135,9 @@ class Horde_Push_Factory_Push
      */
     private function _parseYaml($argument, $conf)
     {
-        if (!class_exists('Horde_Yaml')) {
+        if (!class_exists(\Horde\Yaml\Yaml::class)) {
             throw new Horde_Push_Exception(
-                'The Horde_Yaml package is missing!'
+                'The horde/yaml package is missing!'
             );
         }
         if (!file_exists($argument)) {
@@ -145,7 +145,7 @@ class Horde_Push_Factory_Push
                 sprintf('Invalid file path: "%s"!', $argument)
             );
         }
-        return $this->_createFromData(Horde_Yaml::loadFile($argument));
+        return $this->_createFromData(\Horde\Yaml\Yaml::loadFile($argument));
     }
 
     /**
