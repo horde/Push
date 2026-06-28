@@ -1,5 +1,4 @@
 {
-    "minimum-stability": "dev",
     "name": "horde/push",
     "description": "Social network services library",
     "type": "library",
@@ -12,13 +11,8 @@
             "role": "lead"
         }
     ],
-    "time": "2021-07-04",
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://horde-satis.maintaina.com/"
-        }
-    ],
+    "time": "2026-06-28",
+    "repositories": [],
     "require": {
         "php": "^7.4 || ^8",
         "horde/translation": "^3 || dev-FRAMEWORK_6_0",
@@ -30,7 +24,6 @@
         "horde/cli": "^3 || dev-FRAMEWORK_6_0",
         "horde/feed": "^3 || dev-FRAMEWORK_6_0",
         "horde/http": "^3 || dev-FRAMEWORK_6_0",
-        "horde/kolab_storage": "^3 || dev-FRAMEWORK_6_0",
         "horde/mail": "^3 || dev-FRAMEWORK_6_0",
         "horde/mime": "^3 || dev-FRAMEWORK_6_0",
         "horde/service_twitter": "^3 || dev-FRAMEWORK_6_0",
@@ -42,7 +35,20 @@
             "Horde_Push": "lib/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Horde\\Push\\Test\\": "test/"
+        }
+    },
     "bin": [
         "bin/horde-push"
-    ]
+    ],
+    "config": {
+        "allow-plugins": {}
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-FRAMEWORK_6_0": "1.x-dev"
+        }
+    }
 }
