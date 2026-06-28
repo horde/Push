@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Test the recipient factory.
  *
@@ -15,7 +16,7 @@
 /**
  * Test the recipient factory.
  *
- * Copyright 2011-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2011-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you did not
  * receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -26,24 +27,24 @@
  * @author     Gunnar Wrobel <wrobel@pardus.de>
  * @license    http://www.horde.org/licenses/lgpl21 LGPL 2.1
  * @link       http://www.horde.org/libraries/Horde_Push
+ * @coversNothing
  */
-class Horde_Push_Unit_Push_Factory_RecipientTest
-extends Horde_Push_TestCase
+class Horde_Push_Unit_Push_Factory_RecipientTest extends Horde_Push_TestCase
 {
     public function testTwitter()
     {
         $factory = new Horde_Push_Factory_Recipients();
         $recipients = $factory->create(
-            array(),
-            array(
-                'recipients' => array('twitter'),
-                'twitter' => array(
+            [],
+            [
+                'recipients' => ['twitter'],
+                'twitter' => [
                     'key' => 'test',
                     'secret' => 'test',
                     'token_key' => 'test',
-                    'token_secret' => 'test'
-                )
-            )
+                    'token_secret' => 'test',
+                ],
+            ]
         );
         $this->assertInstanceOf(
             'Horde_Push_Recipient_Twitter',
@@ -55,19 +56,19 @@ extends Horde_Push_TestCase
     {
         $factory = new Horde_Push_Factory_Recipients();
         $recipients = $factory->create(
-            array(),
-            array(
-                'recipients' => array('blogger'),
-                'blogger' => array(),
-                'http' => array(
-                    'proxy' => array(
+            [],
+            [
+                'recipients' => ['blogger'],
+                'blogger' => [],
+                'http' => [
+                    'proxy' => [
                         'proxy_host' => 'localhost',
                         'proxy_port' => 8080,
                         'proxy_user' => 'user',
                         'proxy_pass' => 'pass',
-                    )
-                )
-            )
+                    ],
+                ],
+            ]
         );
         $this->assertInstanceOf(
             'Horde_Push_Recipient_Blogger',
@@ -79,14 +80,14 @@ extends Horde_Push_TestCase
     {
         $factory = new Horde_Push_Factory_Recipients();
         $recipients = $factory->create(
-            array(),
-            array(
-                'recipients' => array('mail'),
-                'mailer' => array(
+            [],
+            [
+                'recipients' => ['mail'],
+                'mailer' => [
                     'type' => 'mock',
-                    'from' => 'user@example.org'
-                )
-            )
+                    'from' => 'user@example.org',
+                ],
+            ]
         );
         $this->assertInstanceOf(
             'Horde_Push_Recipient_Mail',
@@ -101,14 +102,14 @@ extends Horde_Push_TestCase
     {
         $factory = new Horde_Push_Factory_Recipients();
         $recipients = $factory->create(
-            array(),
-            array(
-                'recipients' => array('mail'),
-                'mailer' => array(
+            [],
+            [
+                'recipients' => ['mail'],
+                'mailer' => [
                     'type' => 'UNKNOWN',
-                    'from' => 'user@example.org'
-                )
-            )
+                    'from' => 'user@example.org',
+                ],
+            ]
         );
     }
 
@@ -116,11 +117,11 @@ extends Horde_Push_TestCase
     {
         $factory = new Horde_Push_Factory_Recipients();
         $recipients = $factory->create(
-            array(),
-            array(
-                'recipients' => array('blogger', 'blogger'),
-                'blogger' => array(),
-            )
+            [],
+            [
+                'recipients' => ['blogger', 'blogger'],
+                'blogger' => [],
+            ]
         );
         $this->assertEquals(2, count($recipients));
     }
@@ -129,8 +130,8 @@ extends Horde_Push_TestCase
     {
         $factory = new Horde_Push_Factory_Recipients();
         $recipients = $factory->create(
-            array('recipients' => 'blogger,blogger'),
-            array('blogger' => array())
+            ['recipients' => 'blogger,blogger'],
+            ['blogger' => []]
         );
         $this->assertEquals(2, count($recipients));
     }
@@ -139,8 +140,8 @@ extends Horde_Push_TestCase
     {
         $factory = new Horde_Push_Factory_Recipients();
         $recipients = $factory->create(
-            array('recipients' => " blogger , blogger\n"),
-            array('blogger' => array())
+            ['recipients' => " blogger , blogger\n"],
+            ['blogger' => []]
         );
         $this->assertEquals(2, count($recipients));
     }
@@ -152,8 +153,8 @@ extends Horde_Push_TestCase
     {
         $factory = new Horde_Push_Factory_Recipients();
         $recipients = $factory->create(
-            array(),
-            array('recipients' => array('UNKNOWN'))
+            [],
+            ['recipients' => ['UNKNOWN']]
         );
     }
 
@@ -161,16 +162,16 @@ extends Horde_Push_TestCase
     {
         $factory = new Horde_Push_Factory_Recipients();
         $recipients = $factory->create(
-            array(),
-            array(
-                'recipients' => array('personal-blog'),
-                'recipient' => array(
-                    'personal-blog' => array(
+            [],
+            [
+                'recipients' => ['personal-blog'],
+                'recipient' => [
+                    'personal-blog' => [
                         'type' => 'blogger',
-                        'blogger' => array()
-                    )
-                ),
-            )
+                        'blogger' => [],
+                    ],
+                ],
+            ]
         );
         $this->assertInstanceOf(
             'Horde_Push_Recipient_Blogger',
@@ -182,26 +183,26 @@ extends Horde_Push_TestCase
     {
         $factory = new Horde_Push_Factory_Recipients();
         $recipients = $factory->create(
-            array(),
-            array(
-                'recipients' => array('mail-me'),
-                'recipient' => array(
-                    'mail-me' => array(
+            [],
+            [
+                'recipients' => ['mail-me'],
+                'recipient' => [
+                    'mail-me' => [
                         'type' => 'mail',
-                        'mailer' => array(
+                        'mailer' => [
                             'type' => 'mock',
-                            'from' => 'from@example.com'
-                        )
-                    )
-                ),
-            )
+                            'from' => 'from@example.com',
+                        ],
+                    ],
+                ],
+            ]
         );
         $push = new Horde_Push();
         $push->setSummary('E-MAIL');
         foreach ($recipients as $recipient) {
             $push->addRecipient($recipient);
         }
-        $result = $push->push(array('pretend' => true));
+        $result = $push->push(['pretend' => true]);
         $this->assertContains('from: from@example.com', $result[0]);
     }
 
@@ -209,26 +210,26 @@ extends Horde_Push_TestCase
     {
         $factory = new Horde_Push_Factory_Recipients();
         $recipients = $factory->create(
-            array(),
-            array(
-                'recipients' => array('mail-me:recipient@example.com'),
-                'recipient' => array(
-                    'mail-me' => array(
+            [],
+            [
+                'recipients' => ['mail-me:recipient@example.com'],
+                'recipient' => [
+                    'mail-me' => [
                         'type' => 'mail',
-                        'mailer' => array(
+                        'mailer' => [
                             'type' => 'mock',
-                            'from' => 'from@example.com'
-                        )
-                    )
-                ),
-            )
+                            'from' => 'from@example.com',
+                        ],
+                    ],
+                ],
+            ]
         );
         $push = new Horde_Push();
         $push->setSummary('E-MAIL');
         foreach ($recipients as $recipient) {
             $push->addRecipient($recipient);
         }
-        $result = $push->push(array('pretend' => true));
+        $result = $push->push(['pretend' => true]);
         $this->assertContains('to: recipient@example.com', $result[0]);
     }
 
@@ -236,33 +237,33 @@ extends Horde_Push_TestCase
     {
         $factory = new Horde_Push_Factory_Recipients();
         $recipients = $factory->create(
-            array(),
-            array(
-                'recipients' => array('mail-me'),
-                'recipient' => array(
-                    'mail-me' => array(
+            [],
+            [
+                'recipients' => ['mail-me'],
+                'recipient' => [
+                    'mail-me' => [
                         'type' => 'mail',
                         'acl' => 'recipient@example.com',
-                        'mailer' => array(
+                        'mailer' => [
                             'type' => 'mock',
                             'from' => 'from@example.com',
-                        )
-                    )
-                ),
-            )
+                        ],
+                    ],
+                ],
+            ]
         );
         $push = new Horde_Push();
         $push->setSummary('E-MAIL');
         foreach ($recipients as $recipient) {
             $push->addRecipient($recipient);
         }
-        $result = $push->push(array('pretend' => true));
+        $result = $push->push(['pretend' => true]);
         $this->assertContains('to: recipient@example.com', $result[0]);
     }
 
     public function testEmpty()
     {
         $factory = new Horde_Push_Factory_Recipients();
-        $this->assertEquals(array(), $factory->create(array(),array()));
+        $this->assertEquals([], $factory->create([], []));
     }
 }

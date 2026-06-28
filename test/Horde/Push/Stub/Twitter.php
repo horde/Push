@@ -1,13 +1,10 @@
 <?php
 
-class Horde_Push_Stub_Twitter
-extends Horde_Service_Twitter
+class Horde_Push_Stub_Twitter extends Horde_Service_Twitter
 {
     public $calls;
 
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     public function __get($value)
     {
@@ -16,9 +13,9 @@ extends Horde_Service_Twitter
 
     public function __call($method, $args)
     {
-        $this->calls[] = array(
+        $this->calls[] = [
             'method' => $method,
-            'args'   => $args
-        );
+            'args'   => $args,
+        ];
     }
 }

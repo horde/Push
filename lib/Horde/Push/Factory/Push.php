@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Creates the Horde_Push content object.
  *
@@ -14,7 +15,7 @@
 /**
  * Creates the Horde_Push content object.
  *
- * Copyright 2011-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2011-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you did not
  * receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -39,9 +40,9 @@ class Horde_Push_Factory_Push
     public function create($arguments, $options, $conf)
     {
         if (empty($arguments)) {
-            return array(new Horde_Push());
+            return [new Horde_Push()];
         }
-        $result = array();
+        $result = [];
         foreach ($arguments as $argument) {
             $result[] = $this->_parseArgument($argument, $conf);
         }
@@ -65,14 +66,14 @@ class Horde_Push_Factory_Push
                 throw new Horde_Push_Exception('Missing file path!');
             }
             switch ($elements[0]) {
-            case 'kolab':
-                return $this->_parseKolab($argument, $conf);
-            case 'php':
-                return $this->_parsePhp($argument, $conf);
-            case 'yaml':
-                return $this->_parseYaml($argument, $conf);
-            case 'empty':
-                return new Horde_Push();
+                case 'kolab':
+                    return $this->_parseKolab($argument, $conf);
+                case 'php':
+                    return $this->_parsePhp($argument, $conf);
+                case 'yaml':
+                    return $this->_parseYaml($argument, $conf);
+                case 'empty':
+                    return new Horde_Push();
             }
         }
         throw new Horde_Push_Exception(
@@ -135,7 +136,7 @@ class Horde_Push_Factory_Push
      */
     private function _parseYaml($argument, $conf)
     {
-        if (!class_exists(\Horde\Yaml\Yaml::class)) {
+        if (!class_exists(Horde\Yaml\Yaml::class)) {
             throw new Horde_Push_Exception(
                 'The horde/yaml package is missing!'
             );
@@ -145,7 +146,7 @@ class Horde_Push_Factory_Push
                 sprintf('Invalid file path: "%s"!', $argument)
             );
         }
-        return $this->_createFromData(\Horde\Yaml\Yaml::loadFile($argument));
+        return $this->_createFromData(Horde\Yaml\Yaml::loadFile($argument));
     }
 
     /**

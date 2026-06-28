@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Test the twitter recipient.
  *
@@ -15,7 +16,7 @@
 /**
  * Test the twitter recipient.
  *
- * Copyright 2011-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2011-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you did not
  * receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -26,9 +27,9 @@
  * @author     Gunnar Wrobel <wrobel@pardus.de>
  * @license    http://www.horde.org/licenses/lgpl21 LGPL 2.1
  * @link       http://www.horde.org/libraries/Horde_Push
+ * @coversNothing
  */
-class Horde_Push_Unit_Push_Recipient_TwitterTest
-extends Horde_Push_TestCase
+class Horde_Push_Unit_Push_Recipient_TwitterTest extends Horde_Push_TestCase
 {
     public function testTwitterRecipient()
     {
@@ -38,13 +39,14 @@ extends Horde_Push_TestCase
             ->setSummary('TWEET')
             ->push();
         $this->assertEquals(
-            array(
-                array(
+            [
+                [
                     'method' => 'update',
-                    'args'   => array('TWEET')
-                )
-            ),
-            $stub->calls);
+                    'args'   => ['TWEET'],
+                ],
+            ],
+            $stub->calls
+        );
     }
 
     public function testTwitterReturn()
@@ -55,7 +57,7 @@ extends Horde_Push_TestCase
             ->setSummary('TWEET')
             ->push();
         $this->assertEquals(
-            array('Pushed tweet to twitter.'),
+            ['Pushed tweet to twitter.'],
             $result
         );
     }
@@ -66,9 +68,9 @@ extends Horde_Push_TestCase
         $stub = new Horde_Push_Stub_Twitter();
         $result = $push->addRecipient(new Horde_Push_Recipient_Twitter($stub))
             ->setSummary('TWEET')
-            ->push(array('pretend' => true));
+            ->push(['pretend' => true]);
         $this->assertEquals(
-            array('Would push tweet "TWEET" to twitter.'),
+            ['Would push tweet "TWEET" to twitter.'],
             $result
         );
     }

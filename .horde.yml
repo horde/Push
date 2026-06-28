@@ -8,8 +8,7 @@ description: >-
 list: dev
 type: library
 authors:
-  -
-    name: Gunnar Wrobel
+  - name: Gunnar Wrobel
     user: wrobel
     email: wrobel@pardus.de
     active: true
@@ -40,3 +39,29 @@ dependencies:
       horde/service_twitter: ^3
       horde/test: ^3
       horde/yaml: ^3
+keywords: null
+vendor: horde
+ci-platform:
+  '8.0':
+    - php: ^7.4 || ^8
+    - ext-dom
+  '8.1':
+    - php: ^7.4 || ^8
+    - ext-dom
+  '8.2':
+    - php: ^7.4 || ^8
+    - ext-dom
+  '8.3':
+    - php: ^7.4 || ^8
+    - ext-dom
+  '8.4':
+    - php: ^7.4 || ^8
+    - ext-dom
+  '8.5':
+    - php: ^7.4 || ^8
+    - ext-dom
+  '8.6':
+    - php: ^7.4 || ^8
+    - ext-dom
+ci-platform-flags:
+  needs_installer_plugin: false

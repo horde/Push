@@ -1,4 +1,5 @@
 <?php
+
 /**
  * A mock recipient.
  *
@@ -14,7 +15,7 @@
 /**
  * A mock recipient.
  *
- * Copyright 2011-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2011-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you did not
  * receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -25,15 +26,14 @@
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  * @link     http://www.horde.org/libraries/Horde_Push
  */
-class Horde_Push_Recipient_Mock
-extends Horde_Push_Recipient_Base
+class Horde_Push_Recipient_Mock extends Horde_Push_Recipient_Base
 {
     /**
      * Pushed content elements.
      *
      * @var array
      */
-    public $pushed = array();
+    public $pushed = [];
 
     /**
      * Push content to the recipient.
@@ -43,7 +43,7 @@ extends Horde_Push_Recipient_Base
      *
      * @return NULL
      */
-    public function push(Horde_Push $content, $options = array())
+    public function push(Horde_Push $content, $options = [])
     {
         $this->pushed[] = $content;
         if (empty($options['pretend'])) {

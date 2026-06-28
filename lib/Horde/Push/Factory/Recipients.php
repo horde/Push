@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2011-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2011-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you did not
  * receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -33,7 +34,7 @@ class Horde_Push_Factory_Recipients
      */
     public function create($options, $conf)
     {
-        $result = array();
+        $result = [];
 
         if (isset($options['recipients'])) {
             $recipients = array_map('trim', explode(',', $options['recipients']));
@@ -45,7 +46,7 @@ class Horde_Push_Factory_Recipients
 
         foreach ($recipients as $recipient) {
             if (strpos($recipient, ':') !== false) {
-                list($recipient, $acl) = explode(':', $recipient);
+                [$recipient, $acl] = explode(':', $recipient);
             } else {
                 $acl = null;
             }
@@ -59,26 +60,26 @@ class Horde_Push_Factory_Recipients
                 $type = $recipient;
                 $recipient_conf = $conf;
             }
-            switch($type) {
-            case 'twitter':
-                $r = $this->_createTwitter($recipient_conf);
-                break;
-            case 'facebook':
-                $r = $this->_createFacebook($recipient_conf);
-                break;
-            case 'blogger':
-                $r = $this->_createBlogger($recipient_conf);
-                break;
-            case 'mail':
-                $r = $this->_createMail($recipient_conf);
-                break;
-            case 'mock':
-                $r = new Horde_Push_Recipient_Mock();
-                break;
-            default:
-                throw new Horde_Push_Exception(
-                    sprintf('Unknown recipient type "%s"!', $type)
-                );
+            switch ($type) {
+                case 'twitter':
+                    $r = $this->_createTwitter($recipient_conf);
+                    break;
+                case 'facebook':
+                    $r = $this->_createFacebook($recipient_conf);
+                    break;
+                case 'blogger':
+                    $r = $this->_createBlogger($recipient_conf);
+                    break;
+                case 'mail':
+                    $r = $this->_createMail($recipient_conf);
+                    break;
+                case 'mock':
+                    $r = new Horde_Push_Recipient_Mock();
+                    break;
+                default:
+                    throw new Horde_Push_Exception(
+                        sprintf('Unknown recipient type "%s"!', $type)
+                    );
             }
             $r->setAcl($acl);
             $result[] = $r;
@@ -90,19 +91,19 @@ class Horde_Push_Factory_Recipients
      * Create the twitter recipient.
      *
      * @param array $conf The configuration.
-     * 
+     *
     * @return Horde_Push_Recipient_Twitter The twitter recipient.
      */
     private function _createTwitter($conf)
     {
-        $params = array(
+        $params = [
             'key' => $conf['twitter']['key'],
             'secret' => $conf['twitter']['secret'],
             'requestTokenUrl' => Horde_Service_Twitter::REQUEST_TOKEN_URL,
             'authorizeTokenUrl' => Horde_Service_Twitter::USER_AUTHORIZE_URL,
             'accessTokenUrl' => Horde_Service_Twitter::ACCESS_TOKEN_URL,
-            'signatureMethod' => new Horde_Oauth_SignatureMethod_HmacSha1()
-        );
+            'signatureMethod' => new Horde_Oauth_SignatureMethod_HmacSha1(),
+        ];
 
         /* Create the Consumer */
         $auth = new Horde_Service_Twitter_Auth_Oauth(new Horde_Oauth_Consumer($params));
@@ -122,7 +123,7 @@ class Horde_Push_Factory_Recipients
      * Create the facebook recipient.
      *
      * @param array $conf The configuration.
-     * 
+     *
     * @return Horde_Push_Recipient_Facebook The facebook recipient.
      */
     private function _createFacebook($conf)
@@ -130,9 +131,9 @@ class Horde_Push_Factory_Recipients
         $facebook = new Horde_Service_Facebook(
             $conf['facebook']['key'],
             $conf['facebook']['secret'],
-            array(
-                'http_client' => $this->_createHttpClient($conf)
-            )
+            [
+                'http_client' => $this->_createHttpClient($conf),
+            ]
         );
         $facebook->auth->setSession($conf['facebook']['sid']);
         return new Horde_Push_Recipient_Facebook($facebook, $conf['facebook']);
@@ -164,7 +165,7 @@ class Horde_Push_Factory_Recipients
     {
         return new Horde_Push_Recipient_Mail(
             $this->_createMailTransport($conf),
-            array('from' => isset($conf['mailer']['from']) ? $conf['mailer']['from'] : null)
+            ['from' => $conf['mailer']['from'] ?? null]
         );
     }
 
@@ -177,7 +178,7 @@ class Horde_Push_Factory_Recipients
      */
     private function _createHttpClient($conf)
     {
-        $client_opts = array();
+        $client_opts = [];
         if (!empty($conf['http']['proxy']['proxy_host'])) {
             $client_opts['request.proxyServer'] = $conf['http']['proxy']['proxy_host'];
             $client_opts['request.proxyPort'] = $conf['http']['proxy']['proxy_port'];
@@ -212,12 +213,10 @@ class Horde_Push_Factory_Recipients
      */
     private function _createMailTransport($conf)
     {
-        $transport = isset($conf['mailer']['type'])
-            ? $conf['mailer']['type']
-            : 'null';
-        $params = isset($conf['mailer']['params'])
-            ? $conf['mailer']['params']
-            : array();
+        $transport = $conf['mailer']['type']
+            ?? 'null';
+        $params = $conf['mailer']['params']
+            ?? [];
         $class = 'Horde_Mail_Transport_' . Horde_String::ucfirst($transport);
         if (class_exists($class)) {
             return new $class($params);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Command line tool for pushing content to social networks.
  *
@@ -14,7 +15,7 @@
 /**
  * Command line tool for pushing content to social networks.
  *
- * Copyright 2011-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2011-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you did not
  * receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -32,64 +33,64 @@ class Horde_Push_Cli
      *
      * @param array $parameters A list of named configuration parameters.
      */
-    public static function main(array $parameters = array())
+    public static function main(array $parameters = [])
     {
         $parser = new Horde_Argv_Parser(
-            array('usage' => '%prog [OPTIONS] [SOURCE://ID]')
+            ['usage' => '%prog [OPTIONS] [SOURCE://ID]']
         );
         $parser->addOptions(
-            array(
+            [
                 new Horde_Argv_Option(
                     '-c',
                     '--config',
-                    array(
+                    [
                         'action' => 'store',
                         'help'   => Horde_Push_Translation::t('Path to the configuration file.'),
-                    )
+                    ]
                 ),
                 new Horde_Argv_Option(
                     '-S',
                     '--summary',
-                    array(
+                    [
                         'action' => 'store',
                         'help'   => Horde_Push_Translation::t('A summary replacing the value provided by the source.'),
-                    )
+                    ]
                 ),
                 new Horde_Argv_Option(
                     '-R',
                     '--recipients',
-                    array(
+                    [
                         'action' => 'store',
                         'help'   => Horde_Push_Translation::t('A comma delimited list of recipients.'),
-                    )
+                    ]
                 ),
                 new Horde_Argv_Option(
                     '-T',
                     '--tags',
-                    array(
+                    [
                         'action' => 'store',
                         'help'   => Horde_Push_Translation::t('A comma delimited list of tags.'),
-                    )
+                    ]
                 ),
                 new Horde_Argv_Option(
                     '-L',
                     '--links',
-                    array(
+                    [
                         'action' => 'store',
                         'help'   => Horde_Push_Translation::t('A comma delimited list of links.'),
-                    )
+                    ]
                 ),
                 new Horde_Argv_Option(
                     '-p',
                     '--pretend',
-                    array(
+                    [
                         'action' => 'store_true',
                         'help'   => Horde_Push_Translation::t('Do not push the content but display what would be done.'),
-                    )
+                    ]
                 ),
-            )
+            ]
         );
-        list($options, $arguments) = $parser->parseArgs();
+        [$options, $arguments] = $parser->parseArgs();
 
         global $conf;
 
@@ -104,7 +105,7 @@ class Horde_Push_Cli
             }
             include $options['config'];
         } else {
-            $conf = array('recipients' => array('mock'));
+            $conf = ['recipients' => ['mock']];
         }
 
         if (empty($arguments)) {
@@ -135,7 +136,7 @@ class Horde_Push_Cli
                 $push->addRecipient($recipient);
             }
 
-            $results = $push->push(array('pretend' => !empty($options['pretend'])));
+            $results = $push->push(['pretend' => !empty($options['pretend'])]);
 
             $cli = Horde_Cli::init();
             foreach ($results as $result) {
@@ -143,7 +144,7 @@ class Horde_Push_Cli
                     $cli->message($result->getMessage(), 'cli.error');
                     $fail = true;
                 } else {
-                    $cli->message((string)$result, 'cli.success');
+                    $cli->message((string) $result, 'cli.success');
                 }
             }
         }

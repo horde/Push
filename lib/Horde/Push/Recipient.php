@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This interface describes content recipients.
  *
@@ -14,7 +15,7 @@
 /**
  * This interface describes content recipients.
  *
- * Copyright 2011-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2011-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you did not
  * receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -35,5 +36,5 @@ interface Horde_Push_Recipient
      *
      * @return NULL
      */
-    public function push(Horde_Push $content, $options = array());
+    public function push(Horde_Push $content, $options = []);
 }

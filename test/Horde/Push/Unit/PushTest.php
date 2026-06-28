@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Test the Horde_Push interface.
  *
@@ -15,7 +16,7 @@
 /**
  * Test the Horde_Push interface.
  *
- * Copyright 2011-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2011-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you did not
  * receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -26,9 +27,9 @@
  * @author     Gunnar Wrobel <wrobel@pardus.de>
  * @license    http://www.horde.org/licenses/lgpl21 LGPL 2.1
  * @link       http://www.horde.org/libraries/Horde_Push
+ * @coversNothing
  */
-class Horde_Push_Unit_PushTest
-extends Horde_Push_TestCase
+class Horde_Push_Unit_PushTest extends Horde_Push_TestCase
 {
     public function testSummary()
     {
@@ -52,7 +53,7 @@ extends Horde_Push_TestCase
     public function testContent()
     {
         $push = new Horde_Push();
-        $this->assertEquals(array(), $push->getContent());
+        $this->assertEquals([], $push->getContent());
     }
 
     public function testAddContent()
@@ -60,13 +61,13 @@ extends Horde_Push_TestCase
         $push = new Horde_Push();
         $push->addContent('CONTENT');
         $this->assertEquals(
-            array(
-                array(
+            [
+                [
                     'content' => 'CONTENT',
                     'mime_type' => 'text/plain',
-                    'params' => array(),
-                )
-            ),
+                    'params' => [],
+                ],
+            ],
             $push->getContent()
         );
     }
@@ -77,10 +78,10 @@ extends Horde_Push_TestCase
         $push->addContent('IMAGE', 'image/jpeg');
         $push->addContent('CONTENT');
         $this->assertEquals(
-            array(
-                'image/jpeg' => array(0),
-                'text/plain' => array(1)
-            ),
+            [
+                'image/jpeg' => [0],
+                'text/plain' => [1],
+            ],
             $push->getMimeTypes()
         );
     }
@@ -131,7 +132,7 @@ extends Horde_Push_TestCase
         $result = $push->addRecipient($mock)
             ->setSummary('Test')
             ->push();
-        $this->assertEquals(array('Pushed "Test".'), $result);
+        $this->assertEquals(['Pushed "Test".'], $result);
     }
 
     public function testPretend()
@@ -140,7 +141,7 @@ extends Horde_Push_TestCase
         $mock = new Horde_Push_Recipient_Mock();
         $result = $push->addRecipient($mock)
             ->setSummary('Test')
-            ->push(array('pretend' => true));
-        $this->assertEquals(array('Would push "Test".'), $result);
+            ->push(['pretend' => true]);
+        $this->assertEquals(['Would push "Test".'], $result);
     }
 }

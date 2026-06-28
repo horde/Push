@@ -1,4 +1,5 @@
 <?php
+
 /**
  * E-mail recipients.
  *
@@ -14,7 +15,7 @@
 /**
  * E-mail recipients.
  *
- * Copyright 2011-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2011-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you did not
  * receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -25,8 +26,7 @@
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  * @link     http://www.horde.org/libraries/Horde_Push
  */
-class Horde_Push_Recipient_Mail
-extends Horde_Push_Recipient_Base
+class Horde_Push_Recipient_Mail extends Horde_Push_Recipient_Base
 {
     /**
      * The mail transport.
@@ -48,7 +48,7 @@ extends Horde_Push_Recipient_Base
      * @param Horde_Mail_Transport $mail   The mail transport.
      * @param array                $params Parameters for the mail transport.
      */
-    public function __construct(Horde_Mail_Transport $mail, $params = array())
+    public function __construct(Horde_Mail_Transport $mail, $params = [])
     {
         $this->_mail = $mail;
         $this->_params = $params;
@@ -62,7 +62,7 @@ extends Horde_Push_Recipient_Base
      *
      * @return NULL
      */
-    public function push(Horde_Push $content, $options = array())
+    public function push(Horde_Push $content, $options = [])
     {
         $contents = $content->getContent();
         $types = $content->getMimeTypes();
@@ -107,7 +107,8 @@ extends Horde_Push_Recipient_Base
 
         $mail->send($this->_mail);
         return sprintf(
-            'Pushed mail to %s.', $this->getAcl()
+            'Pushed mail to %s.',
+            $this->getAcl()
         );
     }
 }

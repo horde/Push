@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Test the CLI.
  *
@@ -15,7 +16,7 @@
 /**
  * Test the CLI.
  *
- * Copyright 2011-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2011-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you did not
  * receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -26,18 +27,18 @@
  * @author     Gunnar Wrobel <wrobel@pardus.de>
  * @license    http://www.horde.org/licenses/lgpl21 LGPL 2.1
  * @link       http://www.horde.org/libraries/Horde_Push
+ * @coversNothing
  */
-class Horde_Push_Unit_Push_CliTest
-extends Horde_Push_TestCase
+class Horde_Push_Unit_Push_CliTest extends Horde_Push_TestCase
 {
     public function testEmpty()
     {
         ob_start();
-        $_SERVER['argv'] = array(
+        $_SERVER['argv'] = [
             'test',
-            'yaml://' . __DIR__ . '/../../fixtures/push.yaml'
-        );
-        Horde_Push_Cli::main(array('no_exit' => true));
+            'yaml://' . __DIR__ . '/../../fixtures/push.yaml',
+        ];
+        Horde_Push_Cli::main(['no_exit' => true]);
         $output = ob_get_clean();
         $this->assertContains('Pushed "YAML".', $output);
     }

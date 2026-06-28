@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Blogger.com as recipient.
  *
@@ -14,7 +15,7 @@
 /**
  * Blogger.com as recipient.
  *
- * Copyright 2011-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2011-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you did not
  * receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -25,8 +26,7 @@
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  * @link     http://www.horde.org/libraries/Horde_Push
  */
-class Horde_Push_Recipient_Blogger
-extends Horde_Push_Recipient_Base
+class Horde_Push_Recipient_Blogger extends Horde_Push_Recipient_Base
 {
     /**
      * The HTTP client.
@@ -45,7 +45,7 @@ extends Horde_Push_Recipient_Base
     /**
      * Constructor.
      *
-     * @param Horde_Http_Client $client The HTTP handler for connecting to 
+     * @param Horde_Http_Client $client The HTTP handler for connecting to
      *                                  blogger.com.
      * @param array $params             The connection details for blogger.com.
      */
@@ -63,14 +63,14 @@ extends Horde_Push_Recipient_Base
      *
      * @return NULL
      */
-    public function push(Horde_Push $content, $options = array())
+    public function push(Horde_Push $content, $options = [])
     {
         $entry = new Horde_Feed_Entry_Atom(null, $this->_client);
 
         $types = $content->getMimeTypes();
         if (isset($types['text/html'])) {
             $body = $content->getStringContent($types['text/html'][0]);
-        } else if (isset($types['text/plain'])) {
+        } elseif (isset($types['text/plain'])) {
             $body = $content->getStringContent($types['text/plain'][0]);
         } else {
             $body = '';
@@ -81,7 +81,7 @@ extends Horde_Push_Recipient_Base
         $entry->{'atom:title'}['type'] = 'text';
         $entry->{'atom:content'} = $body;
         $entry->{'atom:content'}['type'] = 'text';
-        
+
         if (!empty($options['pretend'])) {
             return sprintf(
                 "Would push \n\n%s\n\n to %s.",
@@ -94,7 +94,7 @@ extends Horde_Push_Recipient_Base
         $response = $this->_client->post(
             'https://www.google.com/accounts/ClientLogin',
             'accountType=GOOGLE&service=blogger&source=horde-push&Email=' . $this->_params['username'] . '&Passwd=' . $this->_params['password'],
-            array('Content-type', 'application/x-www-form-urlencoded')
+            ['Content-type', 'application/x-www-form-urlencoded']
         );
         if ($response->code !== 200) {
             throw new Horde_Push_Exception('Expected response code 200, got ' . $response->code);
@@ -112,12 +112,12 @@ extends Horde_Push_Recipient_Base
                 'Missing authentication token in the response!'
             );
         }
-        
+
         /* Do the initial post. */
         try {
             $entry->save(
                 $this->_params['url'],
-                array('Authorization' => 'GoogleLogin auth=' . $auth)
+                ['Authorization' => 'GoogleLogin auth=' . $auth]
             );
             $reference = $entry->link('alternate');
             if (!empty($reference)) {
@@ -128,7 +128,8 @@ extends Horde_Push_Recipient_Base
         }
 
         return sprintf(
-            'Pushed blog entry to %s.', $this->_params['url']
+            'Pushed blog entry to %s.',
+            $this->_params['url']
         );
     }
 }

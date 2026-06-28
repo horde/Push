@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Test the push factory.
  *
@@ -15,7 +16,7 @@
 /**
  * Test the push factory.
  *
- * Copyright 2011-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2011-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you did not
  * receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -26,9 +27,9 @@
  * @author     Gunnar Wrobel <wrobel@pardus.de>
  * @license    http://www.horde.org/licenses/lgpl21 LGPL 2.1
  * @link       http://www.horde.org/libraries/Horde_Push
+ * @coversNothing
  */
-class Horde_Push_Unit_Push_Factory_PushTest
-extends Horde_Push_TestCase
+class Horde_Push_Unit_Push_Factory_PushTest extends Horde_Push_TestCase
 {
     public function tearDown()
     {
@@ -39,9 +40,9 @@ extends Horde_Push_TestCase
     {
         $factory = new Horde_Push_Factory_Push();
         $push = $factory->create(
-            array(),
-            array(),
-            array()
+            [],
+            [],
+            []
         );
         $this->assertEquals('', $push[0]->getSummary());
     }
@@ -50,9 +51,9 @@ extends Horde_Push_TestCase
     {
         $factory = new Horde_Push_Factory_Push();
         $push = $factory->create(
-            array('yaml://' . __DIR__ . '/../../../fixtures/push.yaml'),
-            array(),
-            array()
+            ['yaml://' . __DIR__ . '/../../../fixtures/push.yaml'],
+            [],
+            []
         );
         $this->assertEquals('YAML', $push[0]->getSummary());
     }
@@ -61,9 +62,9 @@ extends Horde_Push_TestCase
     {
         $factory = new Horde_Push_Factory_Push();
         $push = $factory->create(
-            array('php://' . __DIR__ . '/../../../fixtures/push.php'),
-            array(),
-            array()
+            ['php://' . __DIR__ . '/../../../fixtures/push.php'],
+            [],
+            []
         );
         $this->assertEquals('PHP', $push[0]->getSummary());
     }
@@ -72,41 +73,41 @@ extends Horde_Push_TestCase
     {
         $factory = new Horde_Push_Factory_Push();
         $push = $factory->create(
-            array('kolab://INBOX/test/libkcal-543769073.132'),
-            array(),
-            array(
-                'kolab' => array(
+            ['kolab://INBOX/test/libkcal-543769073.132'],
+            [],
+            [
+                'kolab' => [
                     'driver' => 'mock',
                     'logger' => $this->getMock('Horde_Log_Logger'),
-                    'queryset' => array('list' => array('queryset' => 'horde')),
-                    'params' => array(
+                    'queryset' => ['list' => ['queryset' => 'horde']],
+                    'params' => [
                         'username' => 'test',
                         'host' => 'localhost',
                         'port' => 143,
-                        'data' => array(
+                        'data' => [
                             'format' => 'brief',
-                            'user/test'  => array(),
-                            'user/test/test'  => array(
+                            'user/test'  => [],
+                            'user/test/test'  => [
                                 't' => 'note.default',
-                                'm' => array(
-                                    1 => array(
+                                'm' => [
+                                    1 => [
                                         'structure' => __DIR__ . '/../../../fixtures/note.php',
-                                        'parts' => array(
-                                            '2' => array(
+                                        'parts' => [
+                                            '2' => [
                                                 'file' => __DIR__ . '/../../../fixtures/note.xml.qp',
-                                            )
-                                        )
-                                    )
-                                ),
-                                's' => array(
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                                's' => [
                                     'uidvalidity' => '12346789',
-                                    'uidnext' => 2
-                                )
-                            )
-                        )
-                    )
-                )
-            )
+                                    'uidnext' => 2,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ]
         );
         $this->assertEquals('Summary', $push[0]->getSummary());
     }
@@ -115,12 +116,12 @@ extends Horde_Push_TestCase
     {
         $factory = new Horde_Push_Factory_Push();
         $push = $factory->create(
-            array(
+            [
                 'php://' . __DIR__ . '/../../../fixtures/push.php',
-                'yaml://' . __DIR__ . '/../../../fixtures/push.yaml'
-            ),
-            array(),
-            array()
+                'yaml://' . __DIR__ . '/../../../fixtures/push.yaml',
+            ],
+            [],
+            []
         );
         $this->assertEquals('PHP', $push[0]->getSummary());
         $this->assertEquals('YAML', $push[1]->getSummary());
@@ -133,9 +134,9 @@ extends Horde_Push_TestCase
     {
         $factory = new Horde_Push_Factory_Push();
         $push = $factory->create(
-            array('php://' . __DIR__ . '/../../../fixtures/DOES_NOT_EXIST'),
-            array(),
-            array()
+            ['php://' . __DIR__ . '/../../../fixtures/DOES_NOT_EXIST'],
+            [],
+            []
         );
     }
 
@@ -146,9 +147,9 @@ extends Horde_Push_TestCase
     {
         $factory = new Horde_Push_Factory_Push();
         $push = $factory->create(
-            array('php://' . __DIR__ . '/../../../fixtures/empty.php'),
-            array(),
-            array()
+            ['php://' . __DIR__ . '/../../../fixtures/empty.php'],
+            [],
+            []
         );
     }
 
@@ -159,9 +160,9 @@ extends Horde_Push_TestCase
     {
         $factory = new Horde_Push_Factory_Push();
         $push = $factory->create(
-            array('yaml://' . __DIR__ . '/../../../fixtures/DOES_NOT_EXIST'),
-            array(),
-            array()
+            ['yaml://' . __DIR__ . '/../../../fixtures/DOES_NOT_EXIST'],
+            [],
+            []
         );
     }
 
@@ -172,9 +173,9 @@ extends Horde_Push_TestCase
     {
         $factory = new Horde_Push_Factory_Push();
         $push = $factory->create(
-            array('yaml://'),
-            array(),
-            array()
+            ['yaml://'],
+            [],
+            []
         );
     }
 
@@ -185,9 +186,9 @@ extends Horde_Push_TestCase
     {
         $factory = new Horde_Push_Factory_Push();
         $push = $factory->create(
-            array('NOSUCH://XYZ'),
-            array(),
-            array()
+            ['NOSUCH://XYZ'],
+            [],
+            []
         );
     }
 }

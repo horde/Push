@@ -1,4 +1,5 @@
 <?php
+
 /**
  * A content element that will be pushed to various recipients.
  *
@@ -14,7 +15,7 @@
 /**
  * A content element that will be pushed to various recipients.
  *
- * Copyright 2011-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2011-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you did not
  * receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -39,35 +40,35 @@ class Horde_Push
      *
      * @var array
      */
-    private $_content = array();
+    private $_content = [];
 
     /**
      * Content types.
      *
      * @var array
      */
-    private $_types = array();
+    private $_types = [];
 
     /**
      * The recipients that will receive the content.
      *
      * @var array
      */
-    private $_recipients = array();
+    private $_recipients = [];
 
     /**
      * Reference links.
      *
      * @var array
      */
-    private $_references = array();
+    private $_references = [];
 
     /**
      * Tags for the push.
      *
      * @var array
      */
-    private $_tags = array();
+    private $_tags = [];
 
     /**
      * Return the summary for this content element.
@@ -138,15 +139,17 @@ class Horde_Push
      *
      * @return Horde_Push This content element.
      */
-    public function addContent($content, $mime_type = 'text/plain',
-                               $params = array())
-    {
+    public function addContent(
+        $content,
+        $mime_type = 'text/plain',
+        $params = []
+    ) {
         $this->_types[$mime_type][] = count($this->_content);
-        $this->_content[] = array(
+        $this->_content[] = [
             'content' => $content,
             'mime_type' => $mime_type,
-            'params' => $params
-        );
+            'params' => $params,
+        ];
         return $this;
     }
 
@@ -236,9 +239,9 @@ class Horde_Push
      *
      * @return Horde_Push This content element.
      */
-    public function push($options = array())
+    public function push($options = [])
     {
-        $results = array();
+        $results = [];
         foreach ($this->_recipients as $recipient) {
             $results[] = $recipient->push($this, $options);
         }

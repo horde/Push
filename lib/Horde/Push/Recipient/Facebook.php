@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Facebook as recipient.
  *
@@ -14,7 +15,7 @@
 /**
  * Facebook as recipient.
  *
- * Copyright 2011-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2011-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you did not
  * receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -25,8 +26,7 @@
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  * @link     http://www.horde.org/libraries/Horde_Push
  */
-class Horde_Push_Recipient_Facebook
-extends Horde_Push_Recipient_Base
+class Horde_Push_Recipient_Facebook extends Horde_Push_Recipient_Base
 {
     /**
      * The facebook client.
@@ -48,7 +48,7 @@ extends Horde_Push_Recipient_Base
      * @param Horde_Service_Facebook $facebook The facebook client.
      * @param array                  $params   The recipient configuration.
      */
-    public function __construct(Horde_Service_Facebook $facebook, $params = array())
+    public function __construct(Horde_Service_Facebook $facebook, $params = [])
     {
         $this->_facebook = $facebook;
         $this->_params = $params;
@@ -62,11 +62,11 @@ extends Horde_Push_Recipient_Base
      *
      * @return string The result description.
      */
-    public function push(Horde_Push $content, $options = array())
+    public function push(Horde_Push $content, $options = [])
     {
         $text = $content->getSummary();
         if (empty($options['pretend'])) {
-            $options = array();
+            $options = [];
             $acl = $this->getAcl();
             if (!empty($acl)) {
                 $options['privacy'] = $acl;
@@ -75,7 +75,8 @@ extends Horde_Push_Recipient_Base
             return 'Pushed to facebook stream.';
         } else {
             return sprintf(
-                'Would push "%s" to the facebook stream.', $text
+                'Would push "%s" to the facebook stream.',
+                $text
             );
         }
     }
@@ -89,11 +90,11 @@ extends Horde_Push_Recipient_Base
     {
         $acl = parent::getAcl();
         if (empty($acl)) {
-            return array();
+            return [];
         }
         if (isset($this->_params['acl']['presets'][$acl])) {
             return $this->_params['acl']['presets'][$acl];
         }
-        return array('value' => $acl);
+        return ['value' => $acl];
     }
 }
